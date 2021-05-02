@@ -1,6 +1,5 @@
 package com.example.animaisfelizes.repository
 
-import androidx.lifecycle.LiveData
 import com.example.animaisfelizes.data.db.entity.AnimalEntity
 
 interface AnimalRepository {
@@ -13,5 +12,5 @@ interface AnimalRepository {
     // Deletar todos os animais
     suspend fun deleteAllAnimais()
     // Listar todos os animais
-    fun getAllAnimais(): LiveData<List<AnimalEntity>>
+    suspend fun getAllAnimais(): List<AnimalEntity>
 }

@@ -1,6 +1,5 @@
 package com.example.animaisfelizes.repository
 
-import androidx.lifecycle.LiveData
 import com.example.animaisfelizes.data.db.dao.AnimalDAO
 import com.example.animaisfelizes.data.db.entity.AnimalEntity
 
@@ -26,7 +25,7 @@ class DatabaseDataSource(private val animalDAO: AnimalDAO): AnimalRepository {
         animalDAO.deleteAll()
     }
 
-    override fun getAllAnimais(): LiveData<List<AnimalEntity>> {
+    override suspend fun getAllAnimais(): List<AnimalEntity> {
         return animalDAO.getAll()
     }
 

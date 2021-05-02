@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.animaisfelizes.R
 import com.example.animaisfelizes.data.db.AppDatabase
 import com.example.animaisfelizes.data.db.dao.AnimalDAO
@@ -41,6 +42,9 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
                 is AnimaisViewModel.AnimalState.Inserted -> {
                     clearFields()
                     hideKeyboard()
+                    requireView().requestFocus()
+
+                    findNavController().popBackStack()
                 }
             }
         }

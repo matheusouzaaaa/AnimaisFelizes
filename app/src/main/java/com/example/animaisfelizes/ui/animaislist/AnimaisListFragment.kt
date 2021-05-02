@@ -40,7 +40,6 @@ class AnimaisListFragment : Fragment(R.layout.animais_list_fragment) {
 
     private fun observeViewModelEvents() {
         viewModel.allAnimaisEvent.observe(viewLifecycleOwner){ allAnimais ->
-
             val animaisListAdapter = AnimaisListAdapter(allAnimais)
 
             //conectar o adaptar ao recyclerview
@@ -50,6 +49,13 @@ class AnimaisListFragment : Fragment(R.layout.animais_list_fragment) {
                 adapter = animaisListAdapter
             }
         }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAnimais()
     }
 
     private fun configureViewListeners(){

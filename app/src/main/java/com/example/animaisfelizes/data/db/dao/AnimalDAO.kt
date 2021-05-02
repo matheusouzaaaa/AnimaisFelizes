@@ -1,6 +1,5 @@
 package com.example.animaisfelizes.data.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -22,5 +21,5 @@ interface AnimalDAO {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM animal")
-    fun getAll(): LiveData<List<AnimalEntity>>
+    suspend fun getAll(): List<AnimalEntity>
 }
