@@ -18,11 +18,12 @@ class DatabaseDataSource(private val animalDAO: AnimalDAO) : AnimalRepository {
     override suspend fun updateAnimal(id: Long, nome: String, idade: String, proprietario: String) {
         // instancia a entidade de animais para editar
         val animal = AnimalEntity(
+            id = id,
             nome = nome,
             idade = idade,
             proprietario = proprietario
         )
-        animalDAO.update(animal)
+        return animalDAO.update(animal)
     }
 
     override suspend fun deleteAnimal(id: Long) {
