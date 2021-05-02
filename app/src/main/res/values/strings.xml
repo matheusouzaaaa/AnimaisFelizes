@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AnimaisFelizes</string>
+    <string name="animal_name_hint">Nome do animal</string>
+    <string name="idade_name_hint">Idade do animal</string>
+    <string name="cadastro_button">Adicionar</string>
+    <string name="title">Pet Shop - Animais Felizes</string>
+    <string name="proprietario_name_hint">Proprietário</string>
 </resources>
