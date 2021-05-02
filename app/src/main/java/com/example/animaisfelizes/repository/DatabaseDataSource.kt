@@ -26,7 +26,7 @@ class DatabaseDataSource(private val animalDAO: AnimalDAO): AnimalRepository {
         animalDAO.deleteAll()
     }
 
-    override suspend fun getAllAnimais(): LiveData<List<AnimalEntity>> {
+    override fun getAllAnimais(): LiveData<List<AnimalEntity>> {
         return animalDAO.getAll()
     }
 

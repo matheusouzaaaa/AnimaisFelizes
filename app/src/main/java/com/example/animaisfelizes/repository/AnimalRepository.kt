@@ -13,5 +13,5 @@ interface AnimalRepository {
     // Deletar todos os animais
     suspend fun deleteAllAnimais()
     // Listar todos os animais
-    suspend fun getAllAnimais(): LiveData<List<AnimalEntity>>
+    fun getAllAnimais(): LiveData<List<AnimalEntity>>
 }
