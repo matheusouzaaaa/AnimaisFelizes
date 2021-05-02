@@ -8,6 +8,6 @@ data class AnimalEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val nome: String,
-    val idade: Number,
+    val idade: String,
     val proprietario: String
 )

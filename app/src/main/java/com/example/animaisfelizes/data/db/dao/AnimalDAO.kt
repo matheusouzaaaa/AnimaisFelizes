@@ -22,5 +22,5 @@ interface AnimalDAO {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM animal")
-    suspend fun getAll(): LiveData<List<AnimalEntity>>
+    fun getAll(): LiveData<List<AnimalEntity>>
 }
