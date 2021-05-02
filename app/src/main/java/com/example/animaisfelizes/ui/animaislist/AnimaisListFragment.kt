@@ -31,7 +31,6 @@ class AnimaisListFragment : Fragment(R.layout.animais_list_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // lista que esta vindo do banco de dados
         observeViewModelEvents()
         //configuração dos listeners dos clicks dos botões
@@ -39,18 +38,22 @@ class AnimaisListFragment : Fragment(R.layout.animais_list_fragment) {
     }
 
     private fun observeViewModelEvents() {
-        viewModel.allAnimaisEvent.observe(viewLifecycleOwner){ allAnimais ->
-            val animaisListAdapter = AnimaisListAdapter(allAnimais)
+        viewModel.allAnimaisEvent.observe(viewLifecycleOwner) { allAnimais ->
+            val animaisListAdapter = AnimaisListAdapter(allAnimais).apply {
+                onItemClick = { animal ->
+                    val directions = AnimaisListFragmentDirections
+                        .actionAnimaisListFragmentToAnimaisFragment(animal)
+                    findNavController().navigateWithAnimations(directions)
+                }
+            }
 
             //conectar o adaptar ao recyclerview
-            recycler_animais.run{
+            recycler_animais.run {
                 //todos items do mesmo tamanho
                 setHasFixedSize(true)
                 adapter = animaisListAdapter
             }
         }
-
-
     }
 
     override fun onResume() {
@@ -58,10 +61,10 @@ class AnimaisListFragment : Fragment(R.layout.animais_list_fragment) {
         viewModel.getAnimais()
     }
 
-    private fun configureViewListeners(){
+    private fun configureViewListeners() {
         // quando o botao de mais receber um click, altera para a próxima tela.
         fabAddAnimal.setOnClickListener {
-            findNavController().navigateWithAnimations(R.id.animaisFragment)
+            findNavController().navigateWithAnimations(R.id.action_animaisListFragment_to_animaisFragment)
         }
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.animaisfelizes.R
 import com.example.animaisfelizes.data.db.AppDatabase
 import com.example.animaisfelizes.data.db.dao.AnimalDAO
@@ -29,21 +30,38 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
         }
     }
 
+    private val args: AnimaisFragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //se eh uma inserção ou não
+        args.animal?.let { animal ->
+            button_animal.text = getString(R.string.editar_button)
+
+            input_name.setText(animal.nome)
+            input_idade.setText(animal.idade)
+            input_proprietario.setText(animal.proprietario)
+        }
 
         observeEvents()
         setListeners()
     }
 
     private fun observeEvents() {
-        viewModel.animalStateEventData.observe(viewLifecycleOwner){ animalState ->
-            when (animalState){
+        viewModel.animalStateEventData.observe(viewLifecycleOwner) { animalState ->
+            when (animalState) {
                 is AnimaisViewModel.AnimalState.Inserted -> {
                     clearFields()
                     hideKeyboard()
                     requireView().requestFocus()
 
+                    findNavController().popBackStack()
+                }
+
+                is AnimaisViewModel.AnimalState.Updated -> {
+                    clearFields()
+                    hideKeyboard()
                     findNavController().popBackStack()
                 }
             }
@@ -62,7 +80,7 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
 
     private fun hideKeyboard() {
         val parentActivity = requireActivity()
-        if(parentActivity is AppCompatActivity){
+        if (parentActivity is AppCompatActivity) {
             parentActivity.hideKeyboard()
         }
     }
@@ -73,7 +91,7 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
             val idade = input_idade.text.toString()
             val proprietario = input_proprietario.text.toString()
 
-            viewModel.addAnimal(nome, idade, proprietario)
+            viewModel.addOrUpdateAnimal(nome, idade, proprietario, args.animal?.id ?: 0)
         }
     }
 }

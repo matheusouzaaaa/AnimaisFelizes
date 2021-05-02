@@ -9,12 +9,22 @@
         android:id="@+id/animaisListFragment"
         android:name="com.example.animaisfelizes.ui.animaislist.AnimaisListFragment"
         android:label="@string/title"
-        tools:layout="@layout/animais_list_fragment" />
+        tools:layout="@layout/animais_list_fragment" >
+        <action
+            android:id="@+id/action_animaisListFragment_to_animaisFragment"
+            app:destination="@id/animaisFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/animaisFragment"
         android:name="com.example.animaisfelizes.ui.animais.AnimaisFragment"
         android:label="@string/title"
-        tools:layout="@layout/animais_fragment" />
+        tools:layout="@layout/animais_fragment" >
+        <argument
+            android:name="animal"
+            app:argType="com.example.animaisfelizes.data.db.entity.AnimalEntity"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

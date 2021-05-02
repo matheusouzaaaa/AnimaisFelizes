@@ -3,9 +3,13 @@
     <string name="animal_name_hint">Nome do animal</string>
     <string name="idade_name_hint">Idade do animal</string>
     <string name="cadastro_button">Adicionar</string>
-    <string name="title">Pet Shop - Animais Felizes</string>
+    <string name="editar_button">Salvar</string>
+    <string name="title">Animais Felizes - Cadastro</string>
+    <string name="title_edicao">Animais Felizes - Edição</string>
     <string name="proprietario_name_hint">Proprietário</string>
     <string name="animal_inserido_sucesso">Animal foi inserido com sucesso</string>
     <string name="animal_inserido_erro">Animal não inserido, aconteceu algum erro</string>
     <string name="todo">TODO</string>
+    <string name="animal_atualizado_sucesso">Animal foi atualizado com sucesso</string>
+    <string name="animal_atualizado_erro">Animal não atualizado, aconteceu algum erro</string>
 </resources>

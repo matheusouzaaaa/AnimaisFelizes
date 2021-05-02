@@ -19,24 +19,49 @@ class AnimaisViewModel(private val repository: AnimalRepository) : ViewModel() {
     val messageStateEventData: LiveData<Int>
         get() = _messageEventData
 
-
-    fun addAnimal(nome: String, idade: String, proprietario: String) = viewModelScope.launch {
-        try{
-            val id = repository.insertAnimal(nome,idade,proprietario)
-
-            if(id > 0){
-                //foi inserido
-                _animalStateEventData.value = AnimalState.Inserted
-                _messageEventData.value = R.string.animal_inserido_sucesso
-            }
-        } catch (ex: Exception){
-            _messageEventData.value = R.string.animal_inserido_erro
-            Log.e(TAG,ex.toString())
+    fun addOrUpdateAnimal(nome: String, idade: String, proprietario: String, id: Long = 0) {
+        if (id > 0) {
+            //eh atualização
+            updateAnimal(id, nome, idade, proprietario)
+        } else {
+            // eh inserção
+            addAnimal(nome, idade, proprietario)
         }
     }
 
-    sealed class AnimalState{
-        object Inserted: AnimalState()
+    private fun updateAnimal(id: Long, nome: String, idade: String, proprietario: String) =
+        viewModelScope.launch {
+            try {
+                repository.updateAnimal(id, nome, idade, proprietario)
+
+                _animalStateEventData.value = AnimalState.Updated
+                _messageEventData.value = R.string.animal_atualizado_sucesso
+
+            } catch (ex: Exception) {
+                _messageEventData.value = R.string.animal_atualizado_erro
+                Log.e(TAG, ex.toString())
+            }
+        }
+
+    private fun addAnimal(nome: String, idade: String, proprietario: String) =
+        viewModelScope.launch {
+            try {
+                val id = repository.insertAnimal(nome, idade, proprietario)
+
+                if (id > 0) {
+                    //foi inserido
+                    _animalStateEventData.value = AnimalState.Inserted
+                    _messageEventData.value = R.string.animal_inserido_sucesso
+                }
+            } catch (ex: Exception) {
+                _messageEventData.value = R.string.animal_inserido_erro
+                Log.e(TAG, ex.toString())
+            }
+        }
+
+    sealed class AnimalState {
+        object Inserted : AnimalState()
+        object Updated : AnimalState()
     }
 
     companion object {

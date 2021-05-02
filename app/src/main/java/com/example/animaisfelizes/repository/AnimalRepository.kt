@@ -1,5 +1,6 @@
 package com.example.animaisfelizes.repository
 
+import androidx.lifecycle.LiveData
 import com.example.animaisfelizes.data.db.entity.AnimalEntity
 
 interface AnimalRepository {
