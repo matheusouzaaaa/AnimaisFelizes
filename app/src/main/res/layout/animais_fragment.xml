@@ -73,7 +73,21 @@
         android:layout_marginTop="16dp"
         android:text="@string/cadastro_button"
         app:layout_constraintEnd_toEndOf="@id/input_layout_proprietario"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/input_layout_proprietario"
         app:layout_constraintTop_toBottomOf="@id/input_layout_proprietario" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/excluir_button"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/button_animal"
+        app:layout_constraintStart_toStartOf="@id/button_animal"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

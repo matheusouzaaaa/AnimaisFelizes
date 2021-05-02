@@ -41,14 +41,13 @@ class AnimaisListFragment : Fragment(R.layout.animais_list_fragment) {
         viewModel.allAnimaisEvent.observe(viewLifecycleOwner) { allAnimais ->
             val animaisListAdapter = AnimaisListAdapter(allAnimais).apply {
                 onItemClick = { animal ->
-                    val directions = AnimaisListFragmentDirections
-                        .actionAnimaisListFragmentToAnimaisFragment(animal)
+                    val directions = AnimaisListFragmentDirections.actionAnimaisListFragmentToAnimaisFragment(animal)
                     findNavController().navigateWithAnimations(directions)
                 }
             }
 
             //conectar o adaptar ao recyclerview
-            recycler_animais.run {
+            with(recycler_animais){
                 //todos items do mesmo tamanho
                 setHasFixedSize(true)
                 adapter = animaisListAdapter

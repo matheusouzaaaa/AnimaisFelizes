@@ -59,9 +59,23 @@ class AnimaisViewModel(private val repository: AnimalRepository) : ViewModel() {
             }
         }
 
+    fun removeAnimal(id: Long) = viewModelScope.launch {
+        try {
+            if (id > 0) {
+                repository.deleteAnimal(id)
+                _animalStateEventData.value = AnimalState.Deleted
+                _messageEventData.value = R.string.animal_excluido_sucesso
+            }
+        } catch (ex: Exception) {
+            _messageEventData.value = R.string.animal_excluido_erro
+            Log.e(TAG, ex.toString())
+        }
+    }
+
     sealed class AnimalState {
         object Inserted : AnimalState()
         object Updated : AnimalState()
+        object Deleted : AnimalState()
     }
 
     companion object {

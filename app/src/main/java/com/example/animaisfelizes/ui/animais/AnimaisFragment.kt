@@ -42,6 +42,8 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
             input_name.setText(animal.nome)
             input_idade.setText(animal.idade)
             input_proprietario.setText(animal.proprietario)
+
+            button_delete.visibility = View.VISIBLE
         }
 
         observeEvents()
@@ -60,6 +62,12 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
                 }
 
                 is AnimaisViewModel.AnimalState.Updated -> {
+                    clearFields()
+                    hideKeyboard()
+                    findNavController().popBackStack()
+                }
+
+                is AnimaisViewModel.AnimalState.Deleted -> {
                     clearFields()
                     hideKeyboard()
                     findNavController().popBackStack()
@@ -92,6 +100,10 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
             val proprietario = input_proprietario.text.toString()
 
             viewModel.addOrUpdateAnimal(nome, idade, proprietario, args.animal?.id ?: 0)
+        }
+
+        button_delete.setOnClickListener {
+            viewModel.removeAnimal(args.animal?.id ?: 0)
         }
     }
 }

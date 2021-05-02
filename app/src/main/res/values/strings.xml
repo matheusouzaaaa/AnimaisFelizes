@@ -12,4 +12,7 @@
     <string name="todo">TODO</string>
     <string name="animal_atualizado_sucesso">Animal foi atualizado com sucesso</string>
     <string name="animal_atualizado_erro">Animal não atualizado, aconteceu algum erro</string>
+    <string name="excluir_button">Deletar</string>
+    <string name="animal_excluido_sucesso">Animal excluído com sucesso</string>
+    <string name="animal_excluido_erro">Erro ao excluir animal.</string>
 </resources>
