@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/animaisFragment">
+    app:startDestination="@id/animaisListFragment">
+
+    <fragment
+        android:id="@+id/animaisListFragment"
+        android:name="com.example.animaisfelizes.ui.animaislist.AnimaisListFragment"
+        android:label="@string/title"
+        tools:layout="@layout/animais_list_fragment" />
 
     <fragment
         android:id="@+id/animaisFragment"
         android:name="com.example.animaisfelizes.ui.animais.AnimaisFragment"
         android:label="@string/title"
         tools:layout="@layout/animais_fragment" />
+
 </navigation>

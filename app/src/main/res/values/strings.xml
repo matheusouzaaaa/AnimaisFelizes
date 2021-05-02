@@ -7,4 +7,5 @@
     <string name="proprietario_name_hint">Proprietário</string>
     <string name="animal_inserido_sucesso">Animal foi inserido com sucesso</string>
     <string name="animal_inserido_erro">Animal não inserido, aconteceu algum erro</string>
+    <string name="todo">TODO</string>
 </resources>
