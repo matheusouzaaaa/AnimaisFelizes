@@ -18,13 +18,21 @@
     <fragment
         android:id="@+id/animaisFragment"
         android:name="com.example.animaisfelizes.ui.animais.AnimaisFragment"
-        android:label="@string/title"
+        android:label="@string/title_edicao"
         tools:layout="@layout/animais_fragment" >
         <argument
             android:name="animal"
             app:argType="com.example.animaisfelizes.data.db.entity.AnimalEntity"
             android:defaultValue="@null"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_animaisFragment_to_vacinasFragment"
+            app:destination="@id/vacinasFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/vacinasFragment"
+        android:name="com.example.animaisfelizes.ui.vacinas.VacinasFragment"
+        android:label="@string/vacinas_fragment"
+        tools:layout="@layout/vacinas_fragment" />
 
 </navigation>

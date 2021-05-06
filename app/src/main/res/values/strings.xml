@@ -4,8 +4,8 @@
     <string name="idade_name_hint">Idade do animal</string>
     <string name="cadastro_button">Adicionar</string>
     <string name="editar_button">Salvar</string>
-    <string name="title">Animais Felizes - Cadastro</string>
-    <string name="title_edicao">Animais Felizes - Edição</string>
+    <string name="title">Animais Felizes</string>
+    <string name="title_edicao">Animais Felizes - Informações</string>
     <string name="proprietario_name_hint">Proprietário</string>
     <string name="animal_inserido_sucesso">Animal foi inserido com sucesso</string>
     <string name="animal_inserido_erro">Animal não inserido, aconteceu algum erro</string>
@@ -15,4 +15,9 @@
     <string name="excluir_button">Deletar</string>
     <string name="animal_excluido_sucesso">Animal excluído com sucesso</string>
     <string name="animal_excluido_erro">Erro ao excluir animal.</string>
+    <string name="vacina_button">Vacinas</string>
+    <string name="cadastro_vacina">Atualizar</string>
+    <string name="vacina_atualizado_sucesso">Vacinas atualizadas com sucesso</string>
+    <string name="vacina_atualizado_erro">Erro ao atualizar vacinas</string>
+    <string name="vacinas_fragment">Animais Felizes - Vacinas</string>
 </resources>

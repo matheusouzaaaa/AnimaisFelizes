@@ -13,10 +13,12 @@ import com.example.animaisfelizes.R
 import com.example.animaisfelizes.data.db.AppDatabase
 import com.example.animaisfelizes.data.db.dao.AnimalDAO
 import com.example.animaisfelizes.extension.hideKeyboard
+import com.example.animaisfelizes.extension.navigateWithAnimations
 import com.example.animaisfelizes.repository.AnimalRepository
 import com.example.animaisfelizes.repository.DatabaseDataSource
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.animais_fragment.*
+import kotlinx.android.synthetic.main.animais_list_fragment.*
 
 class AnimaisFragment : Fragment(R.layout.animais_fragment) {
 
@@ -44,6 +46,7 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
             input_proprietario.setText(animal.proprietario)
 
             button_delete.visibility = View.VISIBLE
+            button_vacina.visibility = View.VISIBLE
         }
 
         observeEvents()
@@ -104,6 +107,11 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
 
         button_delete.setOnClickListener {
             viewModel.removeAnimal(args.animal?.id ?: 0)
+        }
+
+        // quando o botao de mais receber um click, altera para a próxima tela.
+        button_vacina.setOnClickListener {
+            findNavController().navigateWithAnimations(R.id.action_animaisFragment_to_vacinasFragment)
         }
     }
 }
