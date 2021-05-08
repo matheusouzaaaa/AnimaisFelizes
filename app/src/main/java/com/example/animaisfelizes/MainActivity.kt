@@ -23,6 +23,14 @@ class MainActivity : AppCompatActivity() {
         //setando support action bar
         setSupportActionBar(app_toolbar)
 
+        /* navegação por fragments
+            -> foi necessário adicionar informações no build.gradle
+            -> o main_activity.xml vai ser o container de toda a navegação por fragments
+            -> após isso, deve se criar um main_graph.xml (res->navigation->main_graph.xml) que vai gerenciar as navegações de todas as fragments
+            -> quando for criar um recurso, escolhemos a opção Fragment(viewmodel).
+                Ele vai criar um recurso_fragment.xml, um RecursoFragment e um RecursoViewModel
+         */
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)

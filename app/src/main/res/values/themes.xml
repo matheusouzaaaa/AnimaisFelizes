@@ -15,6 +15,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Personalização do toolbar da aplicação -->
     <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/ToolbarStyle.Title</item>
     </style>
