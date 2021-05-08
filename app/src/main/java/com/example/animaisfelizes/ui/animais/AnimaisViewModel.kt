@@ -9,8 +9,17 @@ import com.example.animaisfelizes.R
 import com.example.animaisfelizes.repository.AnimalRepository
 import kotlinx.coroutines.launch
 
+/*
+* -> Recebe o repository.
+* -> Para fazer as ações, deve-se iniciar o escopo dos Coroutines. Para isso deve-se utilizar um extension do lifecycle. (viewModelScope.launch)
+*   -> assim não precisa ficar se preocupando com os lifecycle, pois isso é tratado por baixo dos panos.
+* */
+
 class AnimaisViewModel(private val repository: AnimalRepository) : ViewModel() {
 
+    /*
+        -> Atribui valores para os MutableLiveData para a view receber os valores.
+     */
     private val _animalStateEventData = MutableLiveData<AnimalState>()
     val animalStateEventData: LiveData<AnimalState>
         get() = _animalStateEventData
@@ -72,11 +81,19 @@ class AnimaisViewModel(private val repository: AnimalRepository) : ViewModel() {
         }
     }
 
+    /*
+        -> Eventos
+     */
+
     sealed class AnimalState {
         object Inserted : AnimalState()
         object Updated : AnimalState()
         object Deleted : AnimalState()
     }
+
+    /*
+        -> Criado o companion object para criar uma constante, que vai ser usada nos Logs.
+    */
 
     companion object {
         private val TAG = AnimaisViewModel::class.java.simpleName

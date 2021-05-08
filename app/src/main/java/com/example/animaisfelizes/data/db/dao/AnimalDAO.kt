@@ -5,6 +5,11 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.animaisfelizes.data.db.entity.AnimalEntity
+/*
+    -> Adicionado a anotação Dao para importar a biblioteca do Room.
+    -> Após isso as operações que vão ser feitas no banco de dados.
+    -> Utilizado as anotações em cada função, com suspend, para usar com o Kotlin Coroutines.
+ */
 
 @Dao
 interface AnimalDAO {

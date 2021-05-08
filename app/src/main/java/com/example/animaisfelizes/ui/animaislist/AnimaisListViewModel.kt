@@ -16,6 +16,9 @@ class AnimaisListViewModel(
     val allAnimaisEvent: LiveData<List<AnimalEntity>>
         get() = _allAnimaisEvent
 
+    /*
+        -> Serve para listar os animais recentemente inseridos no banco.
+     */
     fun getAnimais() = viewModelScope.launch {
         _allAnimaisEvent.postValue(repository.getAllAnimais())
     }

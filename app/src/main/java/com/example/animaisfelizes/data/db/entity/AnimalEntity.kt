@@ -5,6 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+/*
+    -> Adicionado a anotação Entity para transformar essa entidade em uma entidade do Room.
+    -> Anotação Parcelize e Parcelable serve para passar o argumento para uma outra tela, pelo fragments.
+ */
 @Parcelize
 @Entity(tableName = "animal")
 data class AnimalEntity (

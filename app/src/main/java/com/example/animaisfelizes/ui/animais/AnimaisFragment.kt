@@ -22,6 +22,10 @@ import kotlinx.android.synthetic.main.animais_list_fragment.*
 
 class AnimaisFragment : Fragment(R.layout.animais_fragment) {
 
+    /*
+        -> Instanciando um viewModel usando Factory. Assim conseguimos passar parametros para o viewModel.
+     */
+
     private val viewModel: AnimaisViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -34,6 +38,7 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
 
     private val args: AnimaisFragmentArgs by navArgs()
 
+    // Ciclo de vida onViewCreated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,6 +58,9 @@ class AnimaisFragment : Fragment(R.layout.animais_fragment) {
         setListeners()
     }
 
+    /*
+        -> Executa funções dependendo do State que for realizado.
+     */
     private fun observeEvents() {
         viewModel.animalStateEventData.observe(viewLifecycleOwner) { animalState ->
             when (animalState) {

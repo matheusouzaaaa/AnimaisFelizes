@@ -9,10 +9,17 @@ import com.example.animaisfelizes.R
 import com.example.animaisfelizes.data.db.entity.AnimalEntity
 import kotlinx.android.synthetic.main.animal_item.view.*
 
+/*
+    -> RecyclerView Adapter: Extende o ViewHolder.
+ */
+
 class AnimaisListAdapter(
     private val animais: List<AnimalEntity>
 ): RecyclerView.Adapter<AnimaisListAdapter.AnimalListViewHolder>() {
 
+    /*
+        -> Função anônima lambda: que faz um "callback"
+     */
     var onItemClick: ((entity: AnimalEntity) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalListViewHolder {
